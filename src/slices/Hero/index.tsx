@@ -55,17 +55,18 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     return () => ctx.revert(); // cleanup!
   }, []);
 
-  const renderLetters = (name: KeyTextField, key: string) => {
-    if (!name) return;
-    return name.split("").map((letter, index) => (
-      <span
-        key={index}
-        className={`name-animation name-animation-${key}-index inline-block opacity-0 `}
-      >
-        {letter}
-      </span>
-    ));
-  };
+const renderLetters = (name: KeyTextField, key: string) => {
+  const fixedName = "DEV.TY"; // Always use "SUON TY"
+  return fixedName.split("").map((letter, index) => (
+    <span
+      key={index}
+      className={`name-animation name-animation-${key}-${index} inline-block opacity-0`}
+    >
+      {letter}
+    </span>
+  ));
+};
+
 
   return (
     <Bounded
