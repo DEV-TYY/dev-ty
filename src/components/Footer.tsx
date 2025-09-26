@@ -57,15 +57,16 @@ export default async function Footer() {
           </ul>
         </nav>
         <div className="socials inline-flex justify-center sm:justify-end">
-          {isFilled.link(settings.data.github_link) && (
-            <PrismicNextLink
-              field={settings.data.github_link}
+            <a
+              href="https://github.com/DEV-TYY"
               className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
-              aria-label={settings.data.name + " on GitHub"}
+              aria-label="on GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaGithub />
-            </PrismicNextLink>
-          )}
+            </a>
+
           {isFilled.link(settings.data.twitter_link) && (
             <PrismicNextLink
               field={settings.data.twitter_link}

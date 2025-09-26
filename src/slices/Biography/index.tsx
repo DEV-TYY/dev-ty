@@ -15,6 +15,8 @@ export type BiographyProps = SliceComponentProps<Content.BiographySlice>;
  * Component for "Biography" Slices.
  */
 const Biography = ({ slice }: BiographyProps): JSX.Element => {
+  console.log("Hello from Biography slice");
+  
   return (
     <Bounded
       data-slice-type={slice.slice_type}

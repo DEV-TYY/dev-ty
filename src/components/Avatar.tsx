@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ImageField } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import Image from "next/image";
 import clsx from "clsx";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
