@@ -31,10 +31,19 @@ import Heading from "@/components/Heading";
 const contactData = [
   { name: "Contact", url: "/about" },
 ]
+// Mock avatar image data
+const avatarImage = {
+  id: "1",
+  url: "/avatar.jpg",
+  alt: "Suon Ty",
+  name: "avatar.jpg",
+  dimensions: { width: 400, height: 400 },
+  copyright: null,
+};
+
 /**
  * Component for "Biography" Slices.
  */
-
 const Biography = (): JSX.Element => {
 
   return (
@@ -61,9 +70,10 @@ const Biography = (): JSX.Element => {
           />
         ))}
 
-       <Avatar
-          image={{ url: "/avatar.jpg", alt: "John Doe" }}
-          className="row-start-1 max-w-sm md:col-start-2 md:row-end-3" />
+        <Avatar
+          image={avatarImage}
+          className="row-start-1 max-w-sm md:col-start-2 md:row-end-3"
+        />
 
       </div>
     </Bounded>
