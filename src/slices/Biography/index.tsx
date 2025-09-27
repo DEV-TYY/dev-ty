@@ -52,13 +52,14 @@ const Biography = (): JSX.Element => {
             <p key={idx}>{block.text}</p>
           ))}
         </div>
-      {contactData.map(({ url, name }, index) => (
+        {contactData.map(({ url, name }, index) => (
           <Button
-            linkField={{ link_type: "Web", url }} // wrap string into a Prismic-style field
+            key={index} // <-- Add this
+            linkField={{ link_type: "Web", url }}
             label={name}
             className="ml-3"
           />
-      ))}
+        ))}
 
        <Avatar
           image={{ url: "/avatar.jpg", alt: "John Doe" }}
