@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'out',
   output: 'export',
-  basePath: '/dev-ty/', // <-- your repo name
-  assetPrefix: '/dev-ty/', // <-- ensures images and assets load correctly
-    images: {
-    unoptimized: true,
+  basePath: '/dev-ty',       // repo name, no trailing slash
+  assetPrefix: '/dev-ty/',   // with trailing slash is fine here
+  images: {
+    unoptimized: true,       // required for next/image with `next export`
   },
 }
 
-
-
+module.exports = nextConfig;
