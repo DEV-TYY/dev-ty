@@ -16,6 +16,7 @@ const contactData = [
 ];
 
 // Mock avatar image data
+// Mock avatar image data
 const avatarImage = {
   id: "1",
   url: "/avatar.jpg",
@@ -23,7 +24,7 @@ const avatarImage = {
   name: "avatar.jpg",
   dimensions: { width: 400, height: 400 },
   copyright: null,
-  edit: "", // <-- Required for type
+  edit: { x: 0, y: 0, zoom: 1, background: "" }, // <-- Correct type
 };
 
 const Biography = (): JSX.Element => {
