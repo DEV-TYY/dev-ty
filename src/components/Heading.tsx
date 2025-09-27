@@ -7,11 +7,11 @@ type HeadingProps = {
   className?: string;
 };
 
+
 export default function Heading({
   as: Comp = "h1",
   className,
-  children,
-  size = "lg",
+  size = "lg"
 }: HeadingProps) {
   return (
     <Comp
@@ -22,9 +22,8 @@ export default function Heading({
         size === "md" && "text-5xl md:text-6xl",
         size === "sm" && "text-3xl md:text-4xl",
         className,
-      )}
-    >
-      {children}
+      )}>
+      About Ty
     </Comp>
   );
 }

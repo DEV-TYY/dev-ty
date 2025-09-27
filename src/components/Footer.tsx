@@ -10,6 +10,22 @@ import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa6";
 export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
+
+  const socialLinks = [
+    {
+      icon: <FaGithub />,
+      url: "https://github.com/DEV-TYY",
+    },
+    {
+      icon: <FaTwitter />,
+      url: "https://twitter.com/DEV-TYY",
+    },
+    {
+      icon: <FaLinkedin />,
+      url: "https://linkedin.com/in/DEV-TYY",
+    },
+  ];
+
   return (
     <Bounded as="footer" className="text-slate-600">
       <div className="container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row ">
@@ -57,34 +73,17 @@ export default async function Footer() {
           </ul>
         </nav>
         <div className="socials inline-flex justify-center sm:justify-end">
-            <a
-              href="https://github.com/DEV-TYY"
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
-              aria-label="on GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub />
-            </a>
-
-          {isFilled.link(settings.data.twitter_link) && (
-            <PrismicNextLink
-              field={settings.data.twitter_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
-              aria-label={settings.data.name + " on Twitter"}
-            >
-              <FaTwitter />
-            </PrismicNextLink>
-          )}
-          {isFilled.link(settings.data.linkedin_link) && (
-            <PrismicNextLink
-              field={settings.data.linkedin_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
-              aria-label={settings.data.name + " on LinkedIn"}
-            >
-              <FaLinkedin />
-            </PrismicNextLink>
-          )}
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+              >
+                {link.icon}
+              </a>
+            ))}
         </div>
       </div>
     </Bounded>

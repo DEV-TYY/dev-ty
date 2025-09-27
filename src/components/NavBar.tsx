@@ -107,55 +107,59 @@ function NameLogo({ name }: { name: KeyTextField }) {
   );
 }
 
+// Menu data could come from Prismic as well
+const menuData = [
+  { name: "About", url: "/about" },
+  { name: "Projects", url: "/projects" },
+  { name: "Blog", url: "/blog" },
+  { name: "Gallery", url: "/gallery" },
+  { name: "Resume", url: "/resume" },
+];
+
+// Additional menu item for contact page
+const contactData = [
+  { name: "Contact", url: "/about" },
+]
+
+// Desktop menu for larger screens
 function DesktopMenu({
-  settings,
   pathname,
 }: {
   settings: Content.SettingsDocument;
   pathname: string;
 }) {
   return (
-    <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {settings.data.nav_item.map(({ link, label }, index) => (
-        <React.Fragment key={label}>
+    <ul className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+      {menuData.map(({ url, name }, index) => (
+        <React.Fragment key={name}>
           <li>
-            <PrismicNextLink
+            <Link
+              href={url}
               className={clsx(
                 "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900",
               )}
-              field={link}
-              aria-current={
-                pathname.includes(asLink(link) as string) ? "page" : undefined
-              }
+              aria-current={pathname.includes(url) ? "page" : undefined}
             >
-              <span
-                className={clsx(
-                  "absolute inset-0 z-0 h-full rounded bg-yellow-300 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                  pathname.includes(asLink(link) as string)
-                    ? "translate-y-6"
-                    : "translate-y-8",
+              <span className={clsx(
+                  "absolute inset-0 z-0 h-full rounded bg-yellow-300 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
+                  pathname.includes(url) ? "translate-y-6" : "translate-y-8",
                 )}
               />
-              <span className="relative">{label}</span>
-            </PrismicNextLink>
+              <span className="relative">{name}</span>
+            </Link>
           </li>
-          {index < settings.data.nav_item.length - 1 && (
-            <span
-              className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
-              aria-hidden="true"
-            >
-              /
-            </span>
-          )}
         </React.Fragment>
       ))}
-      <li>
-        <Button
-          linkField={settings.data.cta_link}
-          label={settings.data.cta_label}
-          className="ml-3"
-        />
-      </li>
-    </div>
+
+      {contactData.map(({ url, name }, index) => (
+        <li key={index}>
+          <Button
+            linkField={{ link_type: "Web", url }} // wrap string into a Prismic-style field
+            label={name}
+            className="ml-3"
+          />
+        </li>
+      ))}
+    </ul>
   );
 }
