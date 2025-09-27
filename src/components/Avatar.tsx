@@ -79,7 +79,7 @@ export default function Avatar({
         style={{ perspective: "500px", perspectiveOrigin: "150% 150%" }}
       >
       <Image
-        src="/avatar.jpg"
+        src="./avatar.jpg"
         alt="Avatar"
         className="avatar-image object-fill"
         width={400}
