@@ -1,17 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: 'out',
   output: 'export',
-  basePath: '/dev-ty', // <-- your repo name
+  basePath: '/dev-ty/', // <-- your repo name
   assetPrefix: '/dev-ty/', // <-- ensures images and assets load correctly
-
+    images: {
+    unoptimized: true,
+  },
 }
 
 
-module.exports = nextConfig
 
-  distDir: 'out',
-  // basePath: '/suon-ty-portfolio-next-js',
-  // assetPrefix: '/suon-ty-portfolio-next-js/',
-  images: {
-    unoptimized: true,
-  },
